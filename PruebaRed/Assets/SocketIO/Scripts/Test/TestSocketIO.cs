@@ -35,14 +35,15 @@ using UnityEngine.UI;
 public class TestSocketIO : MonoBehaviour
 {
 	private GameObject player;
-	private Player _player;
+	private Player _player = new Player("jperez", 0 , 0);
 	private SocketIOComponent socket;
-	[SerializeField]
-	private string number = "1";
+	/*[SerializeField]
+	private string number = "1";*/
 	public void Start() 
 	{
 		player = GameObject.Find("Player");
 		_player = player.GetComponent<Player>();
+		//_player = _player.getPlayer();
 		GameObject go = GameObject.Find("SocketIO");
 		socket = go.GetComponent<SocketIOComponent>();
 
@@ -57,6 +58,7 @@ public class TestSocketIO : MonoBehaviour
     {
 		_player.setCoin(5);
 		Debug.Log(e.data);
+		_player.toObject(e.data.ToString());
     }
 
 	/// OBTENER JUGADORES \\\
