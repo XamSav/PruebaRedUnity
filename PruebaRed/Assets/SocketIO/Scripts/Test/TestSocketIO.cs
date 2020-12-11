@@ -34,22 +34,30 @@ using UnityEngine.UI;
 
 public class TestSocketIO : MonoBehaviour
 {
+	private GameObject player;
+	private Player _player;
 	private SocketIOComponent socket;
 	[SerializeField]
 	private string number = "1";
 	public void Start() 
 	{
+		player = GameObject.Find("Player");
+		_player = player.GetComponent<Player>();
 		GameObject go = GameObject.Find("SocketIO");
 		socket = go.GetComponent<SocketIOComponent>();
 
 		socket.On("open", TestOpen);
 		socket.On("jugador", LookPlayer);
 		socket.On("jugadores", LookPlayers);
-		socket.On("noexist", LookError);
+		socket.On("server:buycoin", Respuesta);
 		socket.On("error", TestError);
 		socket.On("close", TestClose);
 	}
-
+	public void Respuesta(SocketIOEvent e)
+    {
+		_player.setCoin(5);
+		Debug.Log(e.data);
+    }
 
 	/// OBTENER JUGADORES \\\
 		///ENVIAR EVENTO PARA RECIBIR 1 JUGADOR\\\
@@ -74,6 +82,15 @@ public class TestSocketIO : MonoBehaviour
 		Debug.Log(e);
 
 	}
+
+	////////////COMPRAR MONEDA//////////////////
+	public void buyCoin()
+    {
+		socket.Emit("player:buycoin", _player.getAlias());
+    }
+
+
+
 	///Servidor Abierto\\\
 	public void TestOpen(SocketIOEvent e)
 	{
@@ -89,9 +106,5 @@ public class TestSocketIO : MonoBehaviour
 	public void TestError(SocketIOEvent e)
 	{
 		Debug.Log("[SocketIO] Error received: " + e.name + " " + e.data);
-	}
-	public void LookError(SocketIOEvent e)
-	{
-		Debug.Log("This player no exist");
 	}
 }
