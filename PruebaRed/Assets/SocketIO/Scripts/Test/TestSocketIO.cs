@@ -56,7 +56,6 @@ public class TestSocketIO : MonoBehaviour
 	}
 	public void Respuesta(SocketIOEvent e)
     {
-		_player.setCoin(5);
 		Debug.Log(e.data);
 		_player.toObject(e.data.ToString());
     }
@@ -81,14 +80,14 @@ public class TestSocketIO : MonoBehaviour
 		/// RECIVIENDO JUGADORES \\\
 	public void LookPlayers(SocketIOEvent e)
 	{
-		Debug.Log(e);
+		Debug.Log(e.data);
 
 	}
 
 	////////////COMPRAR MONEDA//////////////////
 	public void buyCoin()
     {
-		socket.Emit("player:buycoin", _player.getAlias());
+		socket.Emit("player:buycoin", "jperez"/* _player.getAlias()*/);
     }
 
 
@@ -104,9 +103,9 @@ public class TestSocketIO : MonoBehaviour
 		Debug.Log("[SocketIO] Close received: " + e.name + " " + e.data);
 	}
 
-	/////////// ERRORES \\\\\\\\\\\
+	/////////// ERROR \\\\\\\\\\\
 	public void TestError(SocketIOEvent e)
 	{
-		Debug.Log("[SocketIO] Error received: " + e.name + " " + e.data);
+		Debug.Log("[SocketIO] Error recivido: " + e.name + " " + e.data);
 	}
 }

@@ -9,19 +9,20 @@ public class Player : MonoBehaviour
     private string _alias = "jperez";
     private int _coin = 0;
     private int _billete = 5;
-    public Player(string alias, int coin, int billete)
+    public Player(string alias, int coins, int billete)
     {
         _alias = alias;
-        _coin = coin;
+        _coin = coins;
         _billete = billete;
     }
 
-    public Player Jugador = new Player("jperez",0,0);
+    //public Player Jugador = new Player("jperez",0,0);
+
     #region getset
-    public Player getPlayer()
+    /*public Player getPlayer()
     {
         return Jugador;
-    }
+    }*/
     public string getAlias()
     {
         return _alias;
@@ -41,7 +42,6 @@ public class Player : MonoBehaviour
     public void setCoin(int newCoin)
     {
         _coin += newCoin;
-        Debug.Log(_coin);
     }
     public void setBillete(int newBillete)
     {
@@ -52,6 +52,8 @@ public class Player : MonoBehaviour
     public void toObject(string jsonString)
     {
         Player m = JsonConvert.DeserializeObject<Player>(jsonString);
-        Debug.Log(m._billete);
+        _billete = m._billete;
+        _coin = m._coin;
+        Debug.Log(_billete +" "+ _coin);
     }
 }
