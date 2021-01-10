@@ -41,7 +41,7 @@ namespace SocketIO
 	public class SocketIOComponent : MonoBehaviour
 	{
 		#region Public Properties
-
+		[Header("Network")]
 		public string url = "ws://127.0.0.1:4567/socket.io/?EIO=3&transport=websocket";
 		public bool autoConnect = false;
 		public int reconnectDelay = 5;
@@ -119,12 +119,12 @@ namespace SocketIO
 			#endif
 		}
 
-		public void Start()
+		public virtual void Start()
 		{
 			if (autoConnect) { Connect(); }
 		}
 
-		public void Update()
+		public virtual void Update()
 		{
 			lock(eventQueueLock){ 
 				while(eventQueue.Count > 0){
