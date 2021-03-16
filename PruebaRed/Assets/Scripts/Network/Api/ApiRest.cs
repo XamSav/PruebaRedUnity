@@ -43,7 +43,6 @@ public class ApiRest : MonoBehaviour
     public void SetPlayer(UnityWebRequest peticion)
     {
         SaveAlias();
-        info.getData(peticion.downloadHandler.text);
         resultado.text = peticion.downloadHandler.text;
         nextScene();
         //StartCoroutine(WaitSeconds(peticion.downloadHandler.text));

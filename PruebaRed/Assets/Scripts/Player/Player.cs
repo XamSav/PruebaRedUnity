@@ -1,33 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Newtonsoft.Json;
 
-[CreateAssetMenu(fileName = "PlayerAccount", menuName = "ScriptableObjects/PlayerAccount", order = 1)]
-public class Player : ScriptableObject
+//[CreateAssetMenu(fileName = "PlayerAccount", menuName = "ScriptableObjects/PlayerAccount", order = 1)]
+public class Player : MonoBehaviour
 {
-    public string alias;
-    public string name;
-    private string password;
+    private string alias;
     public int score;
     public int coins;
     public int billetes;
-    private string texto;
-    public void getData(string peticiontexto)
+
+    public Player(string alias)
     {
-        texto = peticiontexto;
-        //TransformData(texto);
+        this.alias = alias;
     }
-    public void TransformData(string peticiontexto)
+    public void SetAlias(string newAlias)
     {
-        Player m = JsonConvert.DeserializeObject<Player>(peticiontexto);
-        alias = m.alias;
-        name = m.name;
-        billetes = m.billetes;
-        coins = m.coins;
+        alias = newAlias;
     }
-    public void newCoin(int coin)
+    public string GetAlias()
     {
-        coins += coin;
+        return alias;
     }
 }

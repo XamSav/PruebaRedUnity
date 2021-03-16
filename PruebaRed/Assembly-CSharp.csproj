@@ -47,6 +47,7 @@
   <PropertyGroup>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <UnityProjectGenerator>Unity/VSTU</UnityProjectGenerator>
+    <UnityProjectGeneratorVersion>4.8.2.0</UnityProjectGeneratorVersion>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2019.4.11f1</UnityVersion>
@@ -63,18 +64,24 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\ChangeScene.cs" />
-    <Compile Include="Assets\ControlPlayer.cs" />
-    <Compile Include="Assets\GameManager.cs" />
+    <Compile Include="Assets\Scripts\CamaraMultiplayer.cs" />
+    <Compile Include="Assets\Scripts\Canvas\BasicOptions.cs" />
+    <Compile Include="Assets\Scripts\Canvas\ChangeScene.cs" />
+    <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\LanzaScript.cs" />
     <Compile Include="Assets\Scripts\Network\Api\ApiRest.cs" />
     <Compile Include="Assets\Scripts\Network\Encriptador.cs" />
     <Compile Include="Assets\Scripts\Network\WebSocket\ClientIO.cs" />
     <Compile Include="Assets\Scripts\Network\WebSocket\MultiplayerIO.cs" />
     <Compile Include="Assets\Scripts\Network\WebSocket\NetworkIdentity.cs" />
+    <Compile Include="Assets\Scripts\OpenWebinars\ClaseCamara.cs" />
+    <Compile Include="Assets\Scripts\Player\ControlPlayer.cs" />
     <Compile Include="Assets\Scripts\Player\Player.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\ReadOnlyAttribute\ReadOnlyAttribute.cs" />
+    <Compile Include="Assets\Scripts\ReadOnlyAttribute\ReadOnlyDrawer.cs" />
+    <Compile Include="Assets\Scripts\ScreenShake.cs" />
     <Compile Include="Assets\Scripts\Utility\Attributes\GreyOut.cs" />
-    <Compile Include="Assets\Scripts\textbuttons.cs" />
     <Compile Include="Assets\SocketIO\JSONObject\JSONObject.cs" />
     <Compile Include="Assets\SocketIO\JSONObject\JSONTemplates.cs" />
     <Compile Include="Assets\SocketIO\JSONObject\VectorTemplates.cs" />
@@ -154,11 +161,11 @@
     <Compile Include="Assets\SocketIO\WebsocketSharp\WebSocketFrame.cs" />
     <Compile Include="Assets\SocketIO\WebsocketSharp\WebSocketState.cs" />
     <Compile Include="Assets\SocketIO\WebsocketSharp\WebSocketStream.cs" />
-    <Compile Include="Assets\UpdatePlayer.cs" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\SocketIO\JSONObject\readme.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
+    <None Include="Assets\Fantasy Skybox FREE\Readme.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
     <None Include="Assets\SocketIO\readme.txt" />
@@ -746,7 +753,20 @@
       <HintPath>D:/Unity/PruebaRedUnity/PruebaRed/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
-  <ItemGroup></ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="NativeGallery.Editor.csproj">
+      <Project>{4E31F976-C4F0-5451-B71D-60F444C53E59}</Project>
+      <Name>NativeGallery.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.2D.Sprite.Editor.csproj">
+      <Project>{7EA66C58-096C-F80C-BDF2-C04E8CD44494}</Project>
+      <Name>Unity.2D.Sprite.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="NativeGallery.Runtime.csproj">
+      <Project>{2B86A2B3-D409-6A31-1290-3545C5ABEF40}</Project>
+      <Name>NativeGallery.Runtime</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

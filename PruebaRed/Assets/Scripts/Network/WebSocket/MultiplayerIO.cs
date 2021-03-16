@@ -129,17 +129,4 @@ namespace Project.Networking
 		}
 		#endregion
 	}
-	[SerializeField]
-	public class Player{
-		public string id;
-		public Position position;
-	}
-
-	[SerializeField]
-	public class Position
-    {
-		public float x;
-		public float y;
-		public float z;
-    }
 }

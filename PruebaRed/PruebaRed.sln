@@ -3,6 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{4E4D3946-24C2-8D4D-BB0E-F889020CA050}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NativeGallery.Runtime", "NativeGallery.Runtime.csproj", "{2B86A2B3-D409-6A31-1290-3545C5ABEF40}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.2D.Sprite.Editor", "Unity.2D.Sprite.Editor.csproj", "{7EA66C58-096C-F80C-BDF2-C04E8CD44494}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NativeGallery.Editor", "NativeGallery.Editor.csproj", "{4E31F976-C4F0-5451-B71D-60F444C53E59}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "Assembly-CSharp-Editor.csproj", "{FFA4A702-87B9-496A-1974-F234178A322D}"
 EndProject
 Global
@@ -15,6 +21,18 @@ Global
 		{4E4D3946-24C2-8D4D-BB0E-F889020CA050}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E4D3946-24C2-8D4D-BB0E-F889020CA050}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E4D3946-24C2-8D4D-BB0E-F889020CA050}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B86A2B3-D409-6A31-1290-3545C5ABEF40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B86A2B3-D409-6A31-1290-3545C5ABEF40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B86A2B3-D409-6A31-1290-3545C5ABEF40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B86A2B3-D409-6A31-1290-3545C5ABEF40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EA66C58-096C-F80C-BDF2-C04E8CD44494}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EA66C58-096C-F80C-BDF2-C04E8CD44494}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EA66C58-096C-F80C-BDF2-C04E8CD44494}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EA66C58-096C-F80C-BDF2-C04E8CD44494}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E31F976-C4F0-5451-B71D-60F444C53E59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E31F976-C4F0-5451-B71D-60F444C53E59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E31F976-C4F0-5451-B71D-60F444C53E59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E31F976-C4F0-5451-B71D-60F444C53E59}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FFA4A702-87B9-496A-1974-F234178A322D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FFA4A702-87B9-496A-1974-F234178A322D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FFA4A702-87B9-496A-1974-F234178A322D}.Release|Any CPU.ActiveCfg = Release|Any CPU
