@@ -6,10 +6,11 @@ public class CamaraMultiplayer : MonoBehaviour
 {
     void Start()
     {
-        PlayerController _pc = GetComponentInParent<PlayerController>();
-        if (!_pc.isControllet)
-        {
-            this.gameObject.SetActive(false);
-        }
+        Cursor.lockState = CursorLockMode.Locked;
+            PlayerController _pc = GetComponentInParent<PlayerController>();
+            if (!_pc.isControllet)
+            {
+                this.gameObject.SetActive(false);
+            }
     }
 }

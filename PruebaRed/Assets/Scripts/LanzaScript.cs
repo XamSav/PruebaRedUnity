@@ -19,7 +19,6 @@ public class LanzaScript : MonoBehaviour
     }
     private void OnCollisionEnter(Collision col)
     {
-        Debug.Log("Hey");
         string alias = col.gameObject.name;
         if(col.gameObject.tag == "Player" && alias != _Padre.name)
         {

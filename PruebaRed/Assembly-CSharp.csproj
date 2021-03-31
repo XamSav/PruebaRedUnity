@@ -67,8 +67,13 @@
     <Compile Include="Assets\Scripts\CamaraMultiplayer.cs" />
     <Compile Include="Assets\Scripts\Canvas\BasicOptions.cs" />
     <Compile Include="Assets\Scripts\Canvas\ChangeScene.cs" />
+    <Compile Include="Assets\Scripts\ConCharacterController\IsMyPlayer.cs" />
+    <Compile Include="Assets\Scripts\ConCharacterController\MouseLook.cs" />
+    <Compile Include="Assets\Scripts\ConCharacterController\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\LanzaScript.cs" />
+    <Compile Include="Assets\Scripts\LightinManager.cs" />
+    <Compile Include="Assets\Scripts\LightinPreset.cs" />
     <Compile Include="Assets\Scripts\Network\Api\ApiRest.cs" />
     <Compile Include="Assets\Scripts\Network\Encriptador.cs" />
     <Compile Include="Assets\Scripts\Network\WebSocket\ClientIO.cs" />
@@ -78,8 +83,6 @@
     <Compile Include="Assets\Scripts\Player\ControlPlayer.cs" />
     <Compile Include="Assets\Scripts\Player\Player.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
-    <Compile Include="Assets\Scripts\ReadOnlyAttribute\ReadOnlyAttribute.cs" />
-    <Compile Include="Assets\Scripts\ReadOnlyAttribute\ReadOnlyDrawer.cs" />
     <Compile Include="Assets\Scripts\ScreenShake.cs" />
     <Compile Include="Assets\Scripts\Utility\Attributes\GreyOut.cs" />
     <Compile Include="Assets\SocketIO\JSONObject\JSONObject.cs" />

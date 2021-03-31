@@ -1582,7 +1582,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eb583e5d2a743345a348380b2df2965, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  url: ws://192.168.0.44:4567/socket.io/?EIO=3&transport=websocket
+  url: ws://192.168.219.111:4567/socket.io/?EIO=3&transport=websocket
   autoConnect: 1
   reconnectDelay: 5
   ackExpirationTime: 30
@@ -1940,9 +1940,10 @@ MonoBehaviour:
   _deathCanvas: {fileID: 393016383}
   _ConnectionCanvas: {fileID: 816968031}
   camara: {fileID: 1949161984}
-  _PlayerPrefab: {fileID: 2398326757646198250, guid: 53262a9be38fc2c4c8dd5b74026258fc,
+  _PlayerPrefab: {fileID: 836096591219874304, guid: 5084d77692e757242b061a0d280ed647,
     type: 3}
   _localPlayer: {fileID: 0}
+  _Enemyplayers: []
 --- !u!4 &729750626
 Transform:
   m_ObjectHideFlags: 0

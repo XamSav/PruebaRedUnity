@@ -11,14 +11,17 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject _ConnectionCanvas;
     [SerializeField]
+    private GameObject _canvasOptions;
+    [SerializeField]
     private GameObject camara;
     private TMP_Text aliasUser;
-
+    bool isPaused = false;
     ///Jugadores
     [SerializeField]
     private GameObject _PlayerPrefab;
     [SerializeField]
     private GameObject _localPlayer;
+    [SerializeField]
     private List<GameObject> _Enemyplayers = new List<GameObject>();
     public static GameManager gm;
     private void Start()
@@ -77,8 +80,6 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            GameObject EnemyDeath = GameObject.Find(alias);
-            _Enemyplayers.Add(EnemyDeath);
             int index = SearchEnemy(alias);
             _Enemyplayers[index].SetActive(false);
         }
@@ -93,7 +94,7 @@ public class GameManager : MonoBehaviour
         _localPlayer.name = alias;
         _localPlayer.GetComponent<Player>().SetAlias(alias);
         PlayerController myPlayer = GameObject.Find(alias).GetComponent<PlayerController>();
-        myPlayer.isControllet = true;
+        myPlayer.isControllet = true;        
         aliasUser = _localPlayer.GetComponentInChildren<TextMeshPro>();
         aliasUser.text = alias;
     }
@@ -108,6 +109,10 @@ public class GameManager : MonoBehaviour
     {
         _Enemyplayers[SearchEnemy(alias)].SetActive(true);
         GameObject.Find(alias).SetActive(true);
+    }
+    public GameObject getMyPlayer()
+    {
+        return _localPlayer;
     }
     #endregion
     #region Bases
@@ -140,6 +145,14 @@ public class GameManager : MonoBehaviour
             }
         }
         return index;
+    }
+    public void ResumePause()
+    {
+        isPaused = !isPaused;
+        Cursor.lockState = isPaused ? CursorLockMode.None : CursorLockMode.Locked;
+        Cursor.visible = isPaused ? true : false;
+        _canvasOptions.SetActive(isPaused ? true : false);
+        _localPlayer.GetComponent<PlayerController>().isPaused = isPaused;
     }
     #endregion
 

@@ -1,24 +1,37 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
+    #region GENERAL
+    private CharacterController _cc;
     private Player _info;
-    private float speed = 2f;
-    [ReadOnly]
     public bool isControllet = false;
-    public bool inGround = false;
-    private Rigidbody _rb;
-    [SerializeField]
-    private float _vel, _force = 5;
     private string _alias;
+    [Range(0, 5)]
+    public float SensibilidadRaton = 15f;
+    public bool isPaused;
+    #endregion
+    #region Jump
+    public bool isGrounded;
+    [SerializeField]
+    private float _gravity = -9.81f;
+    public LayerMask groundMask;
+    public Transform groundCheck;
+    public float groundDistance = 5f;
+    [SerializeField]
+    private float _force = 5;
+    
+    #endregion
+    #region Move
+    [SerializeField]
+    private float _vel = 12f;
+    private Vector3 velocity;
+    #endregion
     private void Start()
     {
-        Cursor.lockState = CursorLockMode.Confined;
-        Cursor.visible = false;
+        _cc = GetComponent<CharacterController>();
         _info = GetComponent<Player>();
-        _rb = GetComponent<Rigidbody>();
         _alias = _info.GetAlias();
     }
     private void Update()
@@ -29,54 +42,54 @@ public class PlayerController : MonoBehaviour
             Jump();
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                Cursor.visible = !Cursor.visible;
+                GameManager.gm.ResumePause();
             }
         }
     }
     private void LateUpdate()
     {
         if (isControllet)
-        {        
-            if (Input.GetAxis("Mouse X") > 0)
+        {
+            if (isGrounded && velocity.y < 0f)
             {
-                transform.Rotate(Vector3.up * speed);
+                velocity.y = -2f;
             }
-            if (Input.GetAxis("Mouse X") < 0)
+            if (Input.GetAxis("Mouse X") > 0 && !isPaused)
             {
-                transform.Rotate(Vector3.up * -speed);
+                transform.Rotate(Vector3.up * SensibilidadRaton);
+            }
+            if (Input.GetAxis("Mouse X") < 0 && !isPaused)
+            {
+                transform.Rotate(Vector3.up * -SensibilidadRaton);
             }
         }
     }
     private void Move()
     {
-        float v = Input.GetAxisRaw("Vertical");
-        float h = Input.GetAxisRaw("Horizontal");
-        if (v != 0)
+        if (!isPaused)
         {
-            _rb.AddRelativeForce(Vector3.forward * v *_vel * Time.deltaTime);
-        }if (h != 0)
-        {
-            _rb.AddRelativeForce(Vector3.right * h *_vel * Time.deltaTime);
+            float v = Input.GetAxisRaw("Vertical");
+            float h = Input.GetAxisRaw("Horizontal");
+            Vector3 move = transform.right * h + transform.forward * v;
+            _cc.Move(move * _vel * Time.deltaTime);
         }
-        if (_rb.velocity.x != 0 || _rb.velocity.y != 0 || _rb.velocity.z != 0)
-        {
-            ClientIO._cl.NewPosition(transform.position, transform.localEulerAngles.y, _alias);
-        }
+        ClientIO._cl.NewPosition(transform.position, transform.localEulerAngles.y, _alias);
     }
     private void Jump()
     {
-        if (inGround)
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        
+        if (Input.GetButtonDown("Jump") && isGrounded && !isPaused)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                inGround = false;
-                _rb.AddForce(Vector3.up * _force);
-            }
+            velocity.y = Mathf.Sqrt(_force * -2f * _gravity);
         }
+        velocity.y += _gravity * Time.deltaTime;
+
+        _cc.Move(velocity * Time.deltaTime);
     }
     private void OnCollisionEnter(Collision col)
     {
-        inGround = true;
+        isGrounded = true;
     }
 
 }

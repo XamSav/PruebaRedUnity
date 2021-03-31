@@ -66,7 +66,6 @@ public class ClientIO : SocketIOComponent
 	}
 	public void NewPosition(Vector3 posicion, float Ry, string alias)
 	{
-		Debug.Log("Entro en NewPosition");
 		Dictionary<string, string> data = new Dictionary<string, string>(); ;
 		data["x"] = posicion.x.ToString();
 		data["y"] = posicion.y.ToString();
